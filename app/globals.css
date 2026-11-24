@@ -1,1 +1,116 @@
 @import "tailwindcss";
+
+/* Dark mode variant for Tailwind v4 */
+@variant dark (&:is(.dark *));
+
+/* CSS Variables for Dark Mode */
+:root {
+  --background: #f1f5f9;
+  --surface: #ffffff;
+  --surface-border: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+}
+
+.dark {
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-border: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+}
+
+/* Use CSS variables from next/font/local for font-family */
+body {
+  font-family: var(--font-tajawal), system-ui, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+pre,
+code {
+  font-family:
+    var(--font-noto-kufi-arabic), ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+}
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Custom scrollbar for side menu */
+.side-menu-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.dark .side-menu-scroll {
+  scrollbar-color: #475569 transparent;
+}
+
+.side-menu-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.side-menu-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.side-menu-scroll::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.side-menu-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+.dark .side-menu-scroll::-webkit-scrollbar-thumb {
+  background-color: #475569;
+}
+
+.dark .side-menu-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #64748b;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.26, 1.55) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
